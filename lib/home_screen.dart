@@ -91,46 +91,58 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+              SizedBox(height: 10),
               Expanded(
-                child: ListView(
-                  children: [
-                    Row(
-                      children: [
-                        buildBookCard('assets/images/Image Placeholder 1.png'),
-                        SizedBox(width: 10),
-                        buildBookCard('assets/images/Image Placeholder 1 (1).png'),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Text(
-                          'Best Seller',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            buildBookCard('assets/images/Image Placeholder 1.png'),
+                            SizedBox(width: 10),
+                            buildBookCard('assets/images/Image Placeholder 1 (1).png'),
+                            SizedBox(width: 10),
+                            buildBookCard('assets/images/Image Placeholder 1.png'),
+                            SizedBox(width: 10),
+                            buildBookCard('assets/images/Image Placeholder 1 (1).png'),
+                          ],
                         ),
-                        Spacer(),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'See more',
-                            style: TextStyle(
-                                color: Color(0xff4838D1),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500),
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Text(
+                            'Best Seller',
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                           ),
-                        ),
-                      ],
-                    ),
-                    buildBestSellerCard(
-                        'Light Mage', 'Laurie Forest', 'assets/images/Image Placeholder 2.png'),
-                  ],
+                          Spacer(),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'See more',
+                              style: TextStyle(
+                                  color: Color(0xff4838D1),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
+                      buildBestSellerCard(
+                          'Light Mage', 'Laurie Forest', 'assets/images/Image Placeholder 2.png'),
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
@@ -153,13 +165,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildBookCard(String imagePath) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.asset(imagePath, width: 150, height: 200, fit: BoxFit.cover),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Image.asset(imagePath, width: 150, height: 200, fit: BoxFit.cover),
+      ],
     );
   }
 
